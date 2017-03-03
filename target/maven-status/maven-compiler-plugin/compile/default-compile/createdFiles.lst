@@ -1,0 +1,9 @@
+com/daniele/hibernate/dao/UserDetailsDao.class
+com/daniele/hibernate/dao/BaseEntityDao.class
+com/daniele/hibernate/service/impl/StatisticsUtilsImpl.class
+com/daniele/hibernate/model/UserDetails.class
+com/daniele/hibernate/service/UserDetailsService.class
+com/daniele/hibernate/model/Address_.java
+com/daniele/hibernate/model/Address.class
+com/daniele/hibernate/model/UserDetails_.java
+com/daniele/hibernate/service/StatisticsUtils.class
