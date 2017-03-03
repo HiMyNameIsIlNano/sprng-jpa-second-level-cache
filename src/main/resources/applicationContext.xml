@@ -11,11 +11,12 @@
     http://www.springframework.org/schema/aop
     http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-<!-- http://stackoverflow.com/questions/16047829/proxy-cannot-be-cast-to-class -->
-	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+	<!-- http://stackoverflow.com/questions/16047829/proxy-cannot-be-cast-to-class -->
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="true" />
 
 	<!-- Activates various annotations to be detected in bean classes e.g: @Autowired -->
-	<context:annotation-config /> 
+	<context:annotation-config />
 
 	<context:component-scan base-package="com.daniele.hibernate.dao.impl" />
 	<context:component-scan base-package="com.daniele.hibernate.service.impl" />
@@ -32,13 +33,17 @@
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-		p:packagesToScan="com.daniele.hibernate.model"
-		p:dataSource-ref="dataSource">
+		p:packagesToScan="com.daniele.hibernate.model" p:dataSource-ref="dataSource">
 		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<property name="generateDdl" value="true" />
-				<property name="showSql" value="true" />
-			</bean>
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.generateDdl">${hibernate.generateDdl}</prop>
+			</props>
 		</property>
 	</bean>
 
