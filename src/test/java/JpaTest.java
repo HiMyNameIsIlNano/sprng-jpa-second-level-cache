@@ -3,12 +3,18 @@ import java.util.Objects;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.daniele.hibernate.dao.exception.UserDetailsNotFoundException;
 import com.daniele.hibernate.model.UserDetails;
 import com.daniele.hibernate.service.UserDetailsService;
 
-public class JpaTest extends BaseDbTest {  
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath:applicationContext-test.xml" })
+public class JpaTest {  
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
@@ -19,7 +25,7 @@ public class JpaTest extends BaseDbTest {
     }
     
     @Test
-    public void testfindUser() {
+    public void testfindUser() throws UserDetailsNotFoundException {
     	Assert.assertTrue(Objects.equals(Long.valueOf(1L), userDetailsService.getUserById(1).getId()));
     }
     

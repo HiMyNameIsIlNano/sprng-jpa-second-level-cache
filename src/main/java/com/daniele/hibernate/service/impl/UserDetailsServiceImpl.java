@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.daniele.hibernate.dao.UserDetailsDao;
+import com.daniele.hibernate.dao.exception.UserDetailsNotFoundException;
 import com.daniele.hibernate.model.UserDetails;
 import com.daniele.hibernate.service.UserDetailsService;
 
@@ -24,8 +25,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	
 	@Override
 	@Transactional(readOnly = true)
-	public UserDetails getUserById(long id) {
-		return userDetailsDao.getUserById(id);
+	public UserDetails getUserById(long id) throws UserDetailsNotFoundException {
+		try {
+			return userDetailsDao.getUserById(id);
+		} catch (Exception e) {
+			throw new UserDetailsNotFoundException();
+		}
 	}
 	
 	@Override

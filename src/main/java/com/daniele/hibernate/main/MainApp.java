@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.daniele.hibernate.dao.exception.UserDetailsNotFoundException;
 import com.daniele.hibernate.model.Address;
 import com.daniele.hibernate.model.UserDetails;
 import com.daniele.hibernate.service.UserDetailsService;
@@ -33,8 +34,12 @@ public class MainApp {
 			System.out.println("Saving user" + i);
 		}
 				
-		UserDetails user = userDetailsService.getUserById(1);
-		System.out.println(user.toString());
+		try {
+			UserDetails user = userDetailsService.getUserById(1);
+			System.out.println(user.toString());
+		} catch (UserDetailsNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 		((ClassPathXmlApplicationContext) context).close();
 	}

@@ -1,1 +1,30 @@
-n Eclipse, from the Galileo release onwards, exists an additional configuration section under Java Compiler. There you can configure all kinds of aspects of annotation processing. Just check the "Enable annotation processing" option, configure the directory for the generated sources and finally add the Hibernate Static Metamodel Generator and JPA 2 jar files to the factory path.
+Install Postgresql (Ubuntu 16.04)
+1. $ sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+2. $ wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | sudo apt-key add -
+3. $ sudo apt-get update
+4. $ sudo apt-get install postgresql postgresql-contrib
+5. $ sudo su - postgres
+6. $ psql
+7. create database "my-hibernate-test-db";
+8. edit the file pg_hba.conf with:
+$ sudo nano  /etc/postgresql/<postgresql_version>/main/pg_hba.conf
+and add the following lines:
+# Access for Hibernate
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+host    all             postgres        127.0.0.1/32            trust
+this will simply tell postgresql to accept tcp/ip connections for user postgres without authentication
+and change the line from
+# Database administrative login by Unix domain socket
+local   all             postgres                                peer
+to
+local   all             postgres                                trust 
+9. $ sudo systemctl restart postgresql.service
+10. login to the database with your user
+psql my-hibernate-test-db -U postgres
+11. create the schema 
+create schema hibernate;
+12. run the MainApp.java class
+
+Eclipse Metamodel Generation:
+
+In Eclipse, from the Galileo release onwards, exists an additional configuration section under Java Compiler. There you can configure all kinds of aspects of annotation processing. Just check the "Enable annotation processing" option, configure the directory for the generated sources and finally add the Hibernate Static Metamodel Generator and JPA 2 jar files to the factory path.
