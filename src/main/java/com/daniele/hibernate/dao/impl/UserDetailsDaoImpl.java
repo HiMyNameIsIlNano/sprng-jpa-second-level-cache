@@ -62,7 +62,7 @@ public class UserDetailsDaoImpl implements UserDetailsDao {
 		CriteriaQuery<UserDetails> query = builder.createQuery(UserDetails.class);
 		Root<UserDetails> root = query.from(UserDetails.class);
 		query.where(builder.like(root.get(UserDetails_.name), likeString));
-		return entityManager.createQuery(query).getResultList();	    
+		return entityManager.createQuery(query).getResultList();
 	}
 	
 	@Override

@@ -13,6 +13,8 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.Cascade;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "USER_DETAILS")
 public class UserDetails extends BaseEntity {
@@ -31,18 +33,11 @@ public class UserDetails extends BaseEntity {
 	@Transient
 	String uselessField;
 	
-	@OneToOne(mappedBy = "user")
+	@OneToOne
 	@Cascade(value = org.hibernate.annotations.CascadeType.ALL)
+	@JsonBackReference
 	private Address address;
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -75,8 +70,16 @@ public class UserDetails extends BaseEntity {
 		this.uselessField = uselessField;
 	}
 	
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	@Override
 	public String toString() {
-		return "Name: " + name + " Join Date: " + joinDate + " Description: " + description;
+		return "Name: " + name + " Join Date: " + joinDate + " Description: " + description + " " + address.toString();
 	}
 }

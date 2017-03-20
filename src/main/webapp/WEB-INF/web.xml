@@ -17,6 +17,10 @@
 	<servlet>
 		<servlet-name>rest</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/rest-servlet.xml</param-value>
+		</init-param>
 		<!--  The container must load and initialize the servlet as the application is deployed. -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>

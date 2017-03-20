@@ -7,6 +7,8 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "ADDRESS")
 public class Address extends BaseEntity {
@@ -22,6 +24,7 @@ public class Address extends BaseEntity {
 
 	@OneToOne
 	@PrimaryKeyJoinColumn
+	@JsonManagedReference
 	private UserDetails user;
 
 	public String getStreet() {
@@ -54,5 +57,9 @@ public class Address extends BaseEntity {
 
 	public void setUserDetails(UserDetails user) {
 		this.user = user;
+	}
+	
+	public String toString() {
+		return "Street: " + street + " zipcode: " + zipcode + " city: " + city;
 	}
 }

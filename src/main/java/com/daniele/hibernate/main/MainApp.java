@@ -8,12 +8,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.daniele.hibernate.dao.exception.UserDetailsNotFoundException;
 import com.daniele.hibernate.model.Address;
 import com.daniele.hibernate.model.UserDetails;
-import com.daniele.hibernate.service.UserDetailsService;
 import com.daniele.hibernate.service.impl.UserDetailsServiceImpl;
 
 public class MainApp {
 	public static void main(String[] args) {
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:WEB-INF/applicationContext.xml");
 		UserDetailsServiceImpl userDetailsService = (UserDetailsServiceImpl) context.getBean("userDetailsServiceImpl");
 		
 		for (int i = 1; i <= 5; i++) {
