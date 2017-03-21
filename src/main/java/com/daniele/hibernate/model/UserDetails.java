@@ -13,8 +13,6 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.Cascade;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 @Entity
 @Table(name = "USER_DETAILS")
 public class UserDetails extends BaseEntity {
@@ -35,7 +33,6 @@ public class UserDetails extends BaseEntity {
 	
 	@OneToOne
 	@Cascade(value = org.hibernate.annotations.CascadeType.ALL)
-	@JsonBackReference
 	private Address address;
 	
 	public String getName() {

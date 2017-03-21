@@ -28,11 +28,9 @@ public class RestResourceTest {
 	private MockMvc mockMvc;
 	
 	@Mock
-	UserDetails userDetails;
-	
-	@Mock
 	UserDetailsService userDetailsService;
 	
+	// Inside the UserResource the bean UserDetailsService is substituted with the bean annotated @Mock within this class
     @InjectMocks
     private UserResource userResource;
 	
@@ -51,6 +49,7 @@ public class RestResourceTest {
     public void readUserDetails() throws Exception {
         /*
     	int detailId = 1;
+    	Mockito.when(userDetailsService.getUserById(1)).thenReturn(userDetails);
     	mockMvc.perform(MockMvcRequestBuilders.get("/rest/" + detailId))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
@@ -64,20 +63,13 @@ public class RestResourceTest {
     
     @Test
     public void testCreationOfANewUser() throws Exception {
-    	System.out.println("testCreationOfANewUser(): started");
-    	// TODO: Inject a mock UserDetails
-    	//Mockito.when(userDetailsService.getUserById(1)).thenReturn(userDetails);
-    	UserDetails dummyUserDetails = getDummyUserDetails(1);
-    	// TODO: why is this not complete?
-    	// System.out.println(dummyUserDetails.toString());
-		
-    	String userDetailsAsString = JsonUtils.prettyJsonString(dummyUserDetails);
-		
-    	mockMvc.perform(MockMvcRequestBuilders.post("/rest/save")
+    	UserDetails userDetails = getDummyUserDetails(1);
+    	String userDetailsAsString = JsonUtils.prettyJsonString(userDetails);
+    	
+        mockMvc.perform(MockMvcRequestBuilders.post("/save")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(userDetailsAsString))
-                .andExpect(status().isCreated());
-        System.out.println("testCreationOfANewUser(): finished");
+                .andExpect(status().isOk());
     }
     
     private UserDetails getDummyUserDetails(int i) {
