@@ -24,6 +24,7 @@ public class Address extends BaseEntity {
 
 	@OneToOne
 	@PrimaryKeyJoinColumn
+	@JsonIgnore
 	private UserDetails user;
 
 	public String getStreet() {
@@ -50,7 +51,6 @@ public class Address extends BaseEntity {
 		this.city = city;
 	}
 
-	@JsonIgnore
 	public UserDetails getUserDetails() {
 		return user;
 	}
