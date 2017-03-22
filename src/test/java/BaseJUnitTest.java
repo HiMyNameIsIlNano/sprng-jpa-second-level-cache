@@ -7,5 +7,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @ContextConfiguration(locations = { "classpath:applicationContext-test.xml" })
 @WebAppConfiguration
 public abstract class BaseJUnitTest {
-	
+	// NOTE: the abstract provides all the subclasses with a mock ServletContext by means of 
+	// @WebApplicationContext required by Spring MVC.
 }
