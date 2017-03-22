@@ -58,6 +58,7 @@ public class RestResourceTest {
                 .andExpect(jsonPath("$[0].uri", is("http://bookmark.com/1/" + userName)))
         );
         */
+    	System.out.println("TODO: readUserDetails()");
     }
     
     @Test
