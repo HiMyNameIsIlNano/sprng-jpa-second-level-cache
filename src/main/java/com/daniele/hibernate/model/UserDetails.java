@@ -19,7 +19,7 @@ public class UserDetails extends BaseEntity {
 	@Transient
 	private static final long serialVersionUID = 2677825940460986009L;
 
-	@Column(name="USER_NAME")	
+	@Column(name="USER_NAME")
 	String name;
 	
 	@Temporal(TemporalType.DATE)

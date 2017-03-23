@@ -1,6 +1,8 @@
 package com.daniele.hibernate.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,8 +29,10 @@ public class UserResource {
      }
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	@ResponseBody
-	public void saveUserDetails(@RequestBody UserDetails userDetails) {
-		System.out.println(userDetails.toString());
+	public ResponseEntity<UserDetails> saveUserDetails(@RequestBody UserDetails userDetails) {
+	    if (userDetails != null) {
+	    	userDetailsService.saveUserDetails(userDetails);
+	    }
+	    return new ResponseEntity<UserDetails>(userDetails, HttpStatus.OK);
 	}
 }
