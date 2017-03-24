@@ -1,0 +1,13 @@
+<section *ngIf="userdetails" class = "panel">
+	<form (ngSubmit)="savePersonDetails()" #personForm="ngForm" class="panel-body">
+		<div class="input-group">
+			<span class="input-group-addon">Name</span> 
+			<input type="text" class = "form-control" name="userid" required [(ngModel)]="userdetails.id" #userid="ngModel">
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon">Name</span> 
+			<input type="text" class = "form-control" name="username" required [(ngModel)]="userdetails.name" #username="ngModel">
+		</div>
+	</form>
+</section>
+<section *ngIf="errorMessage" class = "error">{{errorMessage}}</section>
