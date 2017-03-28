@@ -4,15 +4,15 @@
 	version="3.1">
 	<display-name>REST API PoC</display-name>
 	<description>Test REST API for UserDetails</description>
-	
+
 	<context-param>
-    	<param-name>contextConfigLocation</param-name>
-    	<param-value>/WEB-INF/applicationContext.xml</param-value>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/applicationContext.xml</param-value>
 	</context-param>
 
 	<listener>
-	   <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener> 
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 
 	<servlet>
 		<servlet-name>rest</servlet-name>
@@ -21,7 +21,8 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/rest-servlet.xml</param-value>
 		</init-param>
-		<!--  The container must load and initialize the servlet as the application is deployed. -->
+		<!-- The container must load and initialize the servlet as the application 
+			is deployed. -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
@@ -29,4 +30,25 @@
 		<servlet-name>rest</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
+
+	<filter>
+		<filter-name>cross-origin</filter-name>
+		<filter-class>org.eclipse.jetty.servlets.CrossOriginFilter</filter-class>
+		<init-param>
+			<param-name>allowedOrigins</param-name>
+			<param-value>*</param-value>
+		</init-param>
+		<init-param>
+			<param-name>allowedMethods</param-name>
+			<param-value>GET,POST,DELETE,PUT,HEAD</param-value>
+		</init-param>
+		<init-param>
+			<param-name>allowedHeaders</param-name>
+			<param-value>origin, content-type, accept</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>cross-origin</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>

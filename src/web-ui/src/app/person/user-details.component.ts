@@ -1,18 +1,18 @@
 import { UserDetails } from './UserDetails';
-import { UserdetailsService } from './userdetails.service';
+import { UserDetailsService } from './user-details.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-personbyid',
-  templateUrl: './userdetailsbyid.component.html',
-  styleUrls: ['./userdetailsbyid.component.css']
+  selector: 'app-user-details',
+  templateUrl: './user-details.component.html',
+  styleUrls: ['./user-details.component.css']
 })
-export class UserDetailsByIdComponent implements OnInit, OnDestroy {
+export class UserDetailsComponent implements OnInit, OnDestroy {
   userDetails: UserDetails;
   sub: any;
   
-  constructor(private userDetailsService: UserdetailsService,
+  constructor(private userDetailsService: UserDetailsService,
     private route: ActivatedRoute,
     private router: Router) { }
   
@@ -30,6 +30,6 @@ export class UserDetailsByIdComponent implements OnInit, OnDestroy {
   }
   
   gotoDetails() {
-    this.router.navigate(['/userdetails/details', this.userDetails.id]);
+    this.router.navigate(['/details', this.userDetails.id]);
   }
 }

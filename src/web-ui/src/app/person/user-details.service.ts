@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class UserdetailsService {
+export class UserDetailsService {
 
   private baseUrl: string = 'http://localhost:8080/rest';
   constructor(private http: Http) { }
@@ -13,9 +13,11 @@ export class UserdetailsService {
   get(id: number): Observable<UserDetails> {
     let user$ = this.http
       .get(`${this.baseUrl}/${id}`, { headers: this.getHeaders() })
-      .map(mapUserDetails);
+      .map(res => res.json());
+      //.map(mapUserDetails);
     return user$;
   }
+
 
   private getHeaders() {
     let headers = new Headers();

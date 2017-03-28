@@ -4,19 +4,22 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { UserDetailsByIdComponent } from './person/userdetailsbyid.component';
+import { UserDetailsComponent } from './person/user-details.component';
+import { UserDetailsService } from './person/user-details.service';
+import { routing } from './app.route';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserDetailsByIdComponent
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
-  providers: [],
+  providers: [UserDetailsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

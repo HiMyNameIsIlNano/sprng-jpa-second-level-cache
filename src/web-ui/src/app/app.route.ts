@@ -1,19 +1,19 @@
 import { Routes, RouterModule }  from '@angular/router';
-import { UserDetailsByIdComponent } from './person/userdetailsbyid.component';
+import { UserDetailsComponent } from './person/user-details.component';
   
 // Route config let's you map routes to components
 const routes: Routes = [
-  // map '/persons/:id' to person details component
+  // map '/details/:id' to person details component
   {
-    path: 'userdetails/details/:id',
-    component: UserDetailsByIdComponent
+    path: 'details/:id',
+    component: UserDetailsComponent
   },
-   // map '/' to '/persons' as our default route
+   // map '/' to '/details' as our default route
   {
     path: '',
-    redirectTo: 'userdetails/details/1',
+    redirectTo: 'details/1',
     pathMatch: 'full'
-  },
+  }
 ];
  
 export const routing = RouterModule.forRoot(routes);

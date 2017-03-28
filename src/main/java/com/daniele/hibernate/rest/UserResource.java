@@ -24,7 +24,7 @@ public class UserResource {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET) 
 	@ResponseBody
-    public UserDetails getUserDetails( @PathVariable("id") Integer id) throws UserDetailsNotFoundException {
+	public UserDetails getUserDetails( @PathVariable("id") Integer id) throws UserDetailsNotFoundException {
 		return userDetailsService.getUserById(id); 
      }
 
