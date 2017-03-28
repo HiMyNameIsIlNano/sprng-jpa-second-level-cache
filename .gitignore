@@ -1,6 +1,9 @@
 # Jetty Logs
 jetty.log
 
+#VSCode
+.vscode/
+
 # Eclipse Core
 .project
 .settings/
