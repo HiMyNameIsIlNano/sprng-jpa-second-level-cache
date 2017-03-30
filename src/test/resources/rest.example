@@ -1,0 +1,11 @@
+{
+  "name" : "User 1",
+  "joinDate" : "2017-03-30",
+  "description" : "Description 1",
+  "uselessField" : null,
+  "address" : {
+    "street" : "Street Name 1",
+    "zipcode" : "20091",
+    "city" : "City 1"
+  }
+}
