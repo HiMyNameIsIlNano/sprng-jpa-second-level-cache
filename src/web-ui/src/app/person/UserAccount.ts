@@ -1,5 +1,5 @@
 import { Address } from './Address';
-export interface UserDetails {
+export interface UserAccount {
   id: number;
   name: string;
   joinDate: Date;

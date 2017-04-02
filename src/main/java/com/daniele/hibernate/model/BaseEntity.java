@@ -1,18 +1,21 @@
 package com.daniele.hibernate.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 @MappedSuperclass
 // This enables Jackson annotations at field level only
@@ -26,33 +29,26 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id = null;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_update")
-    private Date lastUpdate;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    // TODO: register this to run automatically
+    private LocalDate lastUpdate = LocalDate.now();
 
-    public Long getId()
-    {
+    public Long getId() {
         return this.id;
     }
  
     @SuppressWarnings("unused")
-    private void setId(final Long id)
-    {
+    private void setId(final Long id) {
         this.id = id;
     }
   
-    public Date getLastUpdate()
-    {
+    public LocalDate getLastUpdate() {
         return this.lastUpdate;
     }
  
-    public void setLastUpdate(final Date lastUpdate)
-    {
-        this.lastUpdate = lastUpdate;
-    }
-    
-    protected void copy(final BaseEntity source)
-    {
+    protected void copy(final BaseEntity source) {
         this.id = source.id;
         this.lastUpdate = source.lastUpdate;
     }
@@ -83,8 +79,7 @@ public abstract class BaseEntity implements Serializable {
         return true;
     }
  
-    protected static boolean getBooleanValue(final Boolean value)
-    {
+    protected static boolean getBooleanValue(final Boolean value) {
         return Boolean.valueOf(String.valueOf(value));
     }
 }

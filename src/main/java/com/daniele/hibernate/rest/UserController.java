@@ -12,27 +12,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.daniele.hibernate.dao.exception.UserDetailsNotFoundException;
-import com.daniele.hibernate.model.UserDetails;
-import com.daniele.hibernate.service.UserDetailsService;
+import com.daniele.hibernate.model.UserAccount;
+import com.daniele.hibernate.service.UserService;
 
 @Controller
 @EnableWebMvc
-public class UserResource {
+public class UserController {
 
 	@Autowired
-	UserDetailsService userDetailsService;
+	UserService userService;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET) 
 	@ResponseBody
-	public UserDetails getUserDetails( @PathVariable("id") Integer id) throws UserDetailsNotFoundException {
-		return userDetailsService.getUserById(id); 
+	public UserAccount getUser( @PathVariable("id") Integer id) throws UserDetailsNotFoundException {
+		return userService.getUserById(id); 
      }
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ResponseEntity<UserDetails> saveUserDetails(@RequestBody UserDetails userDetails) {
-	    if (userDetails != null) {
-	    	userDetailsService.saveUserDetails(userDetails);
+	public ResponseEntity<UserAccount> saveUser(@RequestBody UserAccount user) {
+	    if (user != null) {
+	    	userService.saveUser(user);
 	    }
-	    return new ResponseEntity<UserDetails>(userDetails, HttpStatus.OK);
+	    return new ResponseEntity<UserAccount>(user, HttpStatus.OK);
 	}
 }

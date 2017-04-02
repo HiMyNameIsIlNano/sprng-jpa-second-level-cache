@@ -1,40 +1,40 @@
 package com.daniele.hibernate.main;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import com.daniele.hibernate.dao.exception.UserDetailsNotFoundException;
 import com.daniele.hibernate.model.Address;
-import com.daniele.hibernate.model.UserDetails;
-import com.daniele.hibernate.service.impl.UserDetailsServiceImpl;
+import com.daniele.hibernate.model.UserAccount;
+import com.daniele.hibernate.service.impl.UserServiceImpl;
 
 public class MainApp {
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:WEB-INF/applicationContext.xml");
-		UserDetailsServiceImpl userDetailsService = (UserDetailsServiceImpl) context.getBean("userDetailsServiceImpl");
+		UserServiceImpl userDetailsService = (UserServiceImpl) context.getBean("userServiceImpl");
 		
 		for (int i = 1; i <= 5; i++) {
-			Address address = new Address();
-			address.setCity("City" + i);
-			address.setStreet("Dummy Street N." + i);
-			address.setZipcode("9009" + i);
+			Address address = new Address.AddressBuilder()
+					.withCity("City " + i)
+					.withStreet("Dummy Street")
+					.withStreetNumber((short )i)
+					.withZipCode("9009" + i)
+					.build();
+					
+			UserAccount user = new UserAccount.UserBuilder()
+					.withName("User" + i)
+					.withDescription("Description field " + i)
+					.withAddress(address)
+					.withJoinDate(LocalDate.now())
+					.build();
 			
-			UserDetails user = new UserDetails();
-			user.setName("User" + i);
-			user.setDescription("Description field " + i);
-			user.setAddress(address);
-			user.setJoinDate(new Date());
-			
-			address.setUserDetails(user);
-			
-			userDetailsService.saveUserDetails(user);
+			userDetailsService.saveUser(user);
 			System.out.println("Saving user" + i);
 		}
 				
 		try {
-			UserDetails user = userDetailsService.getUserById(1);
+			UserAccount user = userDetailsService.getUserById(1);
 			System.out.println(user.toString());
 		} catch (UserDetailsNotFoundException e) {
 			e.printStackTrace();

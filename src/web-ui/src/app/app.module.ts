@@ -4,14 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { UserDetailsComponent } from './person/user-details.component';
-import { UserDetailsService } from './person/user-details.service';
+import { UserAccountComponent } from './person/user-account.component';
+import { UserAccountService } from './person/user-account.service';
 import { routing } from './app.route';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserDetailsComponent
+    UserAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +19,7 @@ import { routing } from './app.route';
     HttpModule,
     routing
   ],
-  providers: [UserDetailsService],
+  providers: [UserAccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

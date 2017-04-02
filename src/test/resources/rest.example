@@ -1,11 +1,17 @@
 {
-  "name" : "User 1",
-  "joinDate" : "2017-03-30",
-  "description" : "Description 1",
-  "uselessField" : null,
+  "lastUpdate" : [ 2017, 4, 1 ],
+  "name" : "John",
+  "surname" : "Doe",
+  "email" : "john.doe01@email.com",
+  "password" : "johndoe01",
+  "joinDate" : [ 2017, 4, 1 ],
+  "description" : "I am an automated user",
+  "profilePhoto" : null,
   "address" : {
-    "street" : "Street Name 1",
+    "lastUpdate" : [ 2017, 4, 1 ],
+    "street" : "Dummy Street",
+    "streetNumber" : 1,
     "zipcode" : "20091",
-    "city" : "City 1"
+    "city" : "Foo City 1"
   }
 }

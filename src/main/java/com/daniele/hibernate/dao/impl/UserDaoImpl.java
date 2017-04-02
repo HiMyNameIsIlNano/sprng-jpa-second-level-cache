@@ -14,12 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.daniele.hibernate.dao.UserDetailsDao;
-import com.daniele.hibernate.model.UserDetails;
-import com.daniele.hibernate.model.UserDetails_;
+import com.daniele.hibernate.dao.UserDao;
+import com.daniele.hibernate.model.UserAccount;
+import com.daniele.hibernate.model.UserAccount_;
 
 @Repository
-public class UserDetailsDaoImpl implements UserDetailsDao {
+public class UserDaoImpl implements UserDao {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
@@ -34,10 +34,10 @@ public class UserDetailsDaoImpl implements UserDetailsDao {
     }
 	
 	@Override
-	public UserDetails getUserById(long id) {
-		TypedQuery<UserDetails> query = entityManager.createQuery("SELECT u "
-				+ " FROM UserDetails u "
-				+ " WHERE u.id = :id", UserDetails.class);
+	public UserAccount getUserById(long id) {
+		TypedQuery<UserAccount> query = entityManager.createQuery("SELECT u "
+				+ " FROM UserAccount u "
+				+ " WHERE u.id = :id", UserAccount.class);
 		query.setParameter("id", id);
 		 return query.getSingleResult();
 	}
@@ -45,28 +45,28 @@ public class UserDetailsDaoImpl implements UserDetailsDao {
 	@Override
 	public int countUsers() {
 		String sql = "SELECT COUNT(*) "
-				+ " FROM USER_DETAILS";
+				+ " FROM USER_ACCOUNT";
 		return jdbcTemplate.queryForObject(sql, Integer.class);
 	}
 	
 	@Override
-	public List<UserDetails> getAllUsers(){
-		 TypedQuery<UserDetails> query = entityManager.createQuery("SELECT u "
-		 		+ "FROM UserDetails u", UserDetails.class);
+	public List<UserAccount> getAllUsers(){
+		 TypedQuery<UserAccount> query = entityManager.createQuery("SELECT u "
+		 		+ "FROM UserAccount u", UserAccount.class);
 		 return query.getResultList();
 	}
 	
 	@Override
-	public List<UserDetails> getUsersLike(String likeString){
+	public List<UserAccount> getUsersLike(String likeString){
 		CriteriaBuilder builder =  entityManager.getCriteriaBuilder();
-		CriteriaQuery<UserDetails> query = builder.createQuery(UserDetails.class);
-		Root<UserDetails> root = query.from(UserDetails.class);
-		query.where(builder.like(root.get(UserDetails_.name), likeString));
+		CriteriaQuery<UserAccount> query = builder.createQuery(UserAccount.class);
+		Root<UserAccount> root = query.from(UserAccount.class);
+		query.where(builder.like(root.get(UserAccount_.name), likeString));
 		return entityManager.createQuery(query).getResultList();
 	}
 	
 	@Override
-	public void saveUserDetails(UserDetails userDetails) {
-		entityManager.persist(userDetails);
+	public void saveUser(UserAccount user) {
+		entityManager.persist(user);
 	}
 }

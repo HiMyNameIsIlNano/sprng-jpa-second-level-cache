@@ -1,6 +1,6 @@
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -16,23 +16,23 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.daniele.hibernate.model.Address;
-import com.daniele.hibernate.model.UserDetails;
-import com.daniele.hibernate.rest.UserResource;
-import com.daniele.hibernate.service.UserDetailsService;
+import com.daniele.hibernate.model.UserAccount;
+import com.daniele.hibernate.rest.UserController;
+import com.daniele.hibernate.service.UserService;
 import com.daniele.hibernate.shared.JsonUtils;
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class RestResourceTest {
+public class RestControllerTest {
 	
 	private MockMvc mockMvc;
 	
 	@Mock
-	UserDetailsService userDetailsService;
+	UserService userDetailsService;
 	
 	// Inside the UserResource the bean UserDetailsService is substituted with the bean annotated @Mock within this class
     @InjectMocks
-    private UserResource userResource;
+    private UserController userResource;
 	
     @Before
     public void setUp() {
@@ -63,8 +63,8 @@ public class RestResourceTest {
     
     @Test
     public void testCreationOfANewUser() throws Exception {
-    	UserDetails userDetails = getDummyUserDetails(1);
-    	String userDetailsAsString = JsonUtils.prettyJsonString(userDetails);
+    	UserAccount user = getDummyUser(1);
+    	String userDetailsAsString = JsonUtils.prettyJsonString(user);
     	
         mockMvc.perform(MockMvcRequestBuilders.post("/save")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -72,19 +72,21 @@ public class RestResourceTest {
                 .andExpect(status().isOk());
     }
     
-    private UserDetails getDummyUserDetails(int i) {
-    	Address address = new Address();
-		address.setCity("City" + i);
-		address.setStreet("Dummy Street N." + i);
-		address.setZipcode("9009" + i);
+    private UserAccount getDummyUser(int i) {
+    	Address address = new Address.AddressBuilder()
+				.withCity("City " + i)
+				.withStreet("Dummy Street")
+				.withStreetNumber((short )i)
+				.withZipCode("9009" + i)
+				.build();
+				
+		UserAccount user = new UserAccount.UserBuilder()
+				.withName("User" + i)
+				.withDescription("Description field " + i)
+				.withAddress(address)
+				.withJoinDate(LocalDate.now())
+				.build();
 		
-		UserDetails userDetails = new UserDetails();
-		userDetails.setName("User" + i);
-		userDetails.setDescription("Description field " + i);
-		userDetails.setAddress(address);
-		userDetails.setJoinDate(new Date());
-		
-		address.setUserDetails(userDetails);
-		return userDetails;
+		return user;
     }
 }

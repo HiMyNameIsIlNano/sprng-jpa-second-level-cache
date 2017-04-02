@@ -1,20 +1,19 @@
-import { UserDetails } from './UserDetails';
+import { UserAccount } from './UserAccount';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class UserDetailsService {
+export class UserAccountService {
 
   private baseUrl: string = 'http://localhost:8080/rest';
   constructor(private http: Http) { }
 
-  get(id: number): Observable<UserDetails> {
+  get(id: number): Observable<UserAccount> {
     let user$ = this.http
       .get(`${this.baseUrl}/${id}`, { headers: this.getHeaders() })
-      .map(res => res.json());
-      //.map(mapUserDetails);
+      .map(mapUserAccount);
     return user$;
   }
 
@@ -27,10 +26,10 @@ export class UserDetailsService {
   }
 }
 
-function mapUserDetails(response: Response): UserDetails {
-    return toUserDetails(response.json());
+function mapUserAccount(response: Response): UserAccount {
+    return toUserAccount(response.json());
 }
 
-function toUserDetails(r: any): UserDetails {
+function toUserAccount(r: any): UserAccount {
   return r;
 }
