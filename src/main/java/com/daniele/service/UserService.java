@@ -1,9 +1,9 @@
-package com.daniele.hibernate.service;
+package com.daniele.service;
 
 import java.util.List;
 
-import com.daniele.hibernate.dao.exception.UserDetailsNotFoundException;
-import com.daniele.hibernate.model.UserAccount;
+import com.daniele.dao.exception.UserDetailsNotFoundException;
+import com.daniele.model.UserAccount;
 
 public interface UserService {
 	UserAccount getUserById(long id) throws UserDetailsNotFoundException;

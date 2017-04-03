@@ -1,8 +1,8 @@
-package com.daniele.hibernate.dao;
+package com.daniele.dao;
 
 import java.util.List;
 
-import com.daniele.hibernate.model.UserAccount;
+import com.daniele.model.UserAccount;
 
 public interface UserDao{
 	UserAccount getUserById(long id);

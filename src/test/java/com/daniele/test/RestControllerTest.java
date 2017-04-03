@@ -1,3 +1,4 @@
+package com.daniele.test;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.mockito.Mockito.when;
@@ -17,11 +18,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.daniele.hibernate.model.Address;
-import com.daniele.hibernate.model.UserAccount;
-import com.daniele.hibernate.rest.UserController;
-import com.daniele.hibernate.service.UserService;
-import com.daniele.hibernate.shared.JsonUtils;
+import com.daniele.model.Address;
+import com.daniele.model.UserAccount;
+import com.daniele.rest.UserController;
+import com.daniele.service.UserService;
+import com.daniele.shared.JsonUtils;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RestControllerTest {

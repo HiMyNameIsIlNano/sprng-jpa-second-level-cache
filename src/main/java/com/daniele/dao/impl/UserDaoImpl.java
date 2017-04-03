@@ -1,4 +1,4 @@
-package com.daniele.hibernate.dao.impl;
+package com.daniele.dao.impl;
 
 import java.util.List;
 
@@ -14,9 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.daniele.hibernate.dao.UserDao;
-import com.daniele.hibernate.model.UserAccount;
-import com.daniele.hibernate.model.UserAccount_;
+import com.daniele.dao.UserDao;
+import com.daniele.model.UserAccount;
+import com.daniele.model.UserAccount_;
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -39,7 +39,7 @@ public class UserDaoImpl implements UserDao {
 				+ " FROM UserAccount u "
 				+ " WHERE u.id = :id", UserAccount.class);
 		query.setParameter("id", id);
-		 return query.getSingleResult();
+		return query.getSingleResult();
 	}
 	
 	@Override

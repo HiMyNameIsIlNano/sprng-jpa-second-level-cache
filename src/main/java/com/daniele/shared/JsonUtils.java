@@ -1,4 +1,4 @@
-package com.daniele.hibernate.shared;
+package com.daniele.shared;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

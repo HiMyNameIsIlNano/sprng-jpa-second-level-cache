@@ -1,4 +1,4 @@
-package com.daniele.hibernate.model;
+package com.daniele.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -10,12 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
+import com.daniele.rest.serializer.LocalDateDeserializer;
+import com.daniele.rest.serializer.LocalDateSerializer;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 @MappedSuperclass
 // This enables Jackson annotations at field level only
@@ -32,7 +32,6 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "last_update")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
-    // TODO: register this to run automatically
     private LocalDate lastUpdate = LocalDate.now();
 
     public Long getId() {

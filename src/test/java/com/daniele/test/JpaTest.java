@@ -1,3 +1,4 @@
+package com.daniele.test;
 import java.util.List;
 import java.util.Objects;
 
@@ -5,9 +6,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.daniele.hibernate.dao.exception.UserDetailsNotFoundException;
-import com.daniele.hibernate.model.UserAccount;
-import com.daniele.hibernate.service.UserService;
+import com.daniele.dao.exception.UserDetailsNotFoundException;
+import com.daniele.model.UserAccount;
+import com.daniele.service.UserService;
 
 public class JpaTest extends BaseJUnitTest {  
 	

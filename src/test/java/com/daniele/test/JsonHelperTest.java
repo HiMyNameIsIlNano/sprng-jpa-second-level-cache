@@ -1,9 +1,10 @@
+package com.daniele.test;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.daniele.hibernate.dao.exception.UserDetailsNotFoundException;
-import com.daniele.hibernate.service.UserService;
-import com.daniele.hibernate.shared.JsonUtils;
+import com.daniele.dao.exception.UserDetailsNotFoundException;
+import com.daniele.service.UserService;
+import com.daniele.shared.JsonUtils;
 
 public class JsonHelperTest extends BaseJUnitTest{
 	

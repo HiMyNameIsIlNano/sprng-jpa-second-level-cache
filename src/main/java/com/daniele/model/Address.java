@@ -1,4 +1,4 @@
-package com.daniele.hibernate.model;
+package com.daniele.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

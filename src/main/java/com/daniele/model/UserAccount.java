@@ -1,8 +1,6 @@
-package com.daniele.hibernate.model;
+package com.daniele.model;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -11,16 +9,13 @@ import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 import org.hibernate.annotations.Cascade;
 
+import com.daniele.rest.serializer.LocalDateDeserializer;
+import com.daniele.rest.serializer.LocalDateSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 @Entity
 @Table(name = "USER_ACCOUNT")
@@ -35,9 +30,9 @@ public class UserAccount extends BaseEntity {
 
 	String password;
 
-	// Automatically converted by the LocalDateAttributeConverter
+	// Automatically converted to Date by the LocalDateAttributeConverter
 	@Column(name = "JOIN_DATE")
-	@JsonDeserialize(using= LocalDateDeserializer.class)
+	@JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
 	LocalDate joinDate;
 

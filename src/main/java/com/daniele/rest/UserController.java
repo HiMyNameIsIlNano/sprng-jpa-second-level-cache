@@ -1,4 +1,4 @@
-package com.daniele.hibernate.rest;
+package com.daniele.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import com.daniele.hibernate.dao.exception.UserDetailsNotFoundException;
-import com.daniele.hibernate.model.UserAccount;
-import com.daniele.hibernate.service.UserService;
+import com.daniele.dao.exception.UserDetailsNotFoundException;
+import com.daniele.model.UserAccount;
+import com.daniele.service.UserService;
 
 @Controller
 @EnableWebMvc

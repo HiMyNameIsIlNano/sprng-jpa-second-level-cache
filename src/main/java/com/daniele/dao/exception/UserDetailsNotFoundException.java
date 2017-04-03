@@ -1,4 +1,4 @@
-package com.daniele.hibernate.dao.exception;
+package com.daniele.dao.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -1,4 +1,4 @@
-package com.daniele.hibernate.service.impl;
+package com.daniele.service.impl;
 
 import java.util.List;
 
@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.daniele.hibernate.dao.UserDao;
-import com.daniele.hibernate.dao.exception.UserDetailsNotFoundException;
-import com.daniele.hibernate.model.UserAccount;
-import com.daniele.hibernate.service.UserService;
+import com.daniele.dao.UserDao;
+import com.daniele.dao.exception.UserDetailsNotFoundException;
+import com.daniele.model.UserAccount;
+import com.daniele.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
