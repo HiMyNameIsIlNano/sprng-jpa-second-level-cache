@@ -23,7 +23,7 @@ export class UserAccountComponent implements OnInit, OnDestroy {
       this.userAccountService
         .get(id)
         .subscribe(p => this.userAccount = p, 
-        e => this.errorMessage = 'We are sorry! An error occurred while processing your request'); // error handling
+        e => this.errorMessage = e._body); // error handling
     });
   }
   

@@ -1,45 +1,51 @@
 <section *ngIf="userAccount" class="panel">
 	<!--<pre>{{userAccount | json}}</pre>-->
 
-	<div class="page-header">
-		<h1>Details page for: <small>{{userAccount.name}} {{userAccount.surname}}</small></h1>
-	</div>
-	<div class="page-header">
-		<h2>Generic Info:</h2>
-	</div>
-	<div class="container-fluid">
-		<div>
-			<td>Profile Photo: </td>
-			<td>{{userAccount.profilePhoto}}</td>
-		</div>
-		<div>
-			<td>Name: </td>
-			<td>{{userAccount.email}}</td>
-		</div>
-		<div>
-			<td>Password: </td>
-			<td>{{userAccount.password}}</td>
-		</div>
-		<div>
-			<td>Joined last: </td>
-			<td>{{userAccount.joinDate}}</td>
-		</div>
-		<div>
-			<td>About me: </td>
-			<td>{{userAccount.description}}</td>
-		</div>
-	</div>
-	<div class="page-header">
-		<h2>Address:</h2>
-	</div>
-	<div class="container-fluid">
-		<div>
-			<td>Street name, (number): </td>
-			<td>{{userAccount.address.street}}, ({{userAccount.address.streetNumber}})</td>
-		</div>
-		<div>
-			<td>City, (Zip Code): </td>
-			<td>{{userAccount.address.city}}, ({{userAccount.address.zipcode}})</td>
+	<div id="details">
+		<div class="container">
+			<div class="col-sm-10 col-sm-offset-1">
+				<div class="page-header">
+					<h1>Details page for: <small>{{userAccount.name}} {{userAccount.surname}}</small></h1>
+				</div>
+				<div class="page-header">
+					<h2>Generic Info:</h2>
+				</div>
+				<div class="container-fluid">
+					<div>
+						<td>Profile Photo: </td>
+						<td>{{userAccount.profilePhoto}}</td>
+					</div>
+					<div>
+						<td>Name: </td>
+						<td>{{userAccount.email}}</td>
+					</div>
+					<div>
+						<td>Password: </td>
+						<td>{{userAccount.password}}</td>
+					</div>
+					<div>
+						<td>Joined last: </td>
+						<td>{{userAccount.joinDate}}</td>
+					</div>
+					<div>
+						<td>About me: </td>
+						<td>{{userAccount.description}}</td>
+					</div>
+				</div>
+				<div class="page-header">
+					<h2>Address:</h2>
+				</div>
+				<div class="container-fluid">
+					<div>
+						<td>Street name, (number): </td>
+						<td>{{userAccount.address.street}}, ({{userAccount.address.streetNumber}})</td>
+					</div>
+					<div>
+						<td>City, (Zip Code): </td>
+						<td>{{userAccount.address.city}}, ({{userAccount.address.zipcode}})</td>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>

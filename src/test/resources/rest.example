@@ -1,15 +1,15 @@
 {
-  "lastUpdate" : [ 2017, 4, 1 ],
+  "lastUpdate" : "2017-04-07",
   "name" : "John",
-  "surname" : "Doe",
+  "surname" : null,
   "email" : "john.doe01@email.com",
   "password" : "johndoe01",
-  "joinDate" : [ 2017, 4, 1 ],
+  "joinDate" : "2017-04-07",
   "description" : "I am an automated user",
   "profilePhoto" : null,
   "address" : {
-    "lastUpdate" : [ 2017, 4, 1 ],
-    "street" : "Dummy Street",
+    "lastUpdate" : "2017-04-07",
+    "street" : null,
     "streetNumber" : 1,
     "zipcode" : "20091",
     "city" : "Foo City 1"

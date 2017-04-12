@@ -1,4 +1,4 @@
-package com.daniele.rest;
+package com.daniele.rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,19 +20,19 @@ import com.daniele.service.UserService;
 public class UserController {
 
 	@Autowired
-	UserService userService;
-	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET) 
+	private UserService userService;
+
+	@RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public UserAccount getUser( @PathVariable("id") Integer id) throws UserDetailsNotFoundException {
-		return userService.getUserById(id); 
-     }
+	public ResponseEntity<UserAccount> getUser(@PathVariable("id") Integer id) throws UserDetailsNotFoundException {
+		return new ResponseEntity<UserAccount>(userService.getUserById(id), HttpStatus.OK);
+	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ResponseEntity<UserAccount> saveUser(@RequestBody UserAccount user) {
-	    if (user != null) {
-	    	userService.saveUser(user);
-	    }
-	    return new ResponseEntity<UserAccount>(user, HttpStatus.OK);
+		if (user != null) {
+			userService.saveUser(user);
+		}
+		return new ResponseEntity<UserAccount>(user, HttpStatus.OK);
 	}
 }

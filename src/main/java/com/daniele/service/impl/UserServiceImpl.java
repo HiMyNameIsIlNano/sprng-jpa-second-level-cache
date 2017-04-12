@@ -50,4 +50,10 @@ public class UserServiceImpl implements UserService {
 	public List<UserAccount> getUsersLike(String stringLike) {
 		return userDao.getUsersLike(stringLike);
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public UserAccount getUserByEmail(String email) {
+		return userDao.getUserByEmail(email);
+	}
 }

@@ -9,5 +9,6 @@ public interface UserDao{
 	int countUsers();
 	List<UserAccount> getAllUsers();
 	List<UserAccount> getUsersLike(String likeString);
+	UserAccount getUserByEmail(String email);
 	void saveUser(UserAccount user);
 }

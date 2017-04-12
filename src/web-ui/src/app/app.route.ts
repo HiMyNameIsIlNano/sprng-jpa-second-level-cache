@@ -1,25 +1,25 @@
 import { Routes, RouterModule }  from '@angular/router';
 import { UserAccountComponent } from './person/user-account.component';
-  
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './shared/auth.guard';
+
 // Route config let's you map routes to components
 const routes: Routes = [
-  // map '/details/:id' to person details component
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  // map '/details/:id' to person details component only if Authenticated
   {
     path: 'details/:id',
-    component: UserAccountComponent
+    component: UserAccountComponent, canActivate: [AuthGuard]
   },
-  // map '/' to '/details' as our default route
+  // map '/' to '/login' as our default route
   {
     path: '',
-    redirectTo: 'details/1',
+    redirectTo: '/login',
     pathMatch: 'full'
-  },
-  // map '/' to '/homepage' as our default route
-  /*{
-    path: '',
-    redirectTo: 'details/1',
-    pathMatch: 'full'
-  }*/
+  }
 ];
  
 export const routing = RouterModule.forRoot(routes);

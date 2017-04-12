@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.daniele.model.Address;
 import com.daniele.model.UserAccount;
-import com.daniele.rest.UserController;
+import com.daniele.rest.controller.UserController;
 import com.daniele.service.UserService;
 import com.daniele.shared.JsonUtils;
 

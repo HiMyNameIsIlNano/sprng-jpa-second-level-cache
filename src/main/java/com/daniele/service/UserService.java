@@ -11,4 +11,5 @@ public interface UserService {
 	List<UserAccount> getAllUsers();
 	void saveUser(UserAccount user);
 	List<UserAccount> getUsersLike(String stringLike);
+	UserAccount getUserByEmail(String email);
 }

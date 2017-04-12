@@ -18,6 +18,7 @@ import com.daniele.dao.UserDao;
 import com.daniele.model.UserAccount;
 import com.daniele.model.UserAccount_;
 
+
 @Repository
 public class UserDaoImpl implements UserDao {
 	@PersistenceContext
@@ -63,6 +64,15 @@ public class UserDaoImpl implements UserDao {
 		Root<UserAccount> root = query.from(UserAccount.class);
 		query.where(builder.like(root.get(UserAccount_.name), likeString));
 		return entityManager.createQuery(query).getResultList();
+	}
+
+	@Override
+	public UserAccount getUserByEmail(String email){
+		CriteriaBuilder builder =  entityManager.getCriteriaBuilder();
+		CriteriaQuery<UserAccount> query = builder.createQuery(UserAccount.class);
+		Root<UserAccount> root = query.from(UserAccount.class);
+		query.where(builder.equal(root.get(UserAccount_.email), email));
+		return entityManager.createQuery(query).getSingleResult();
 	}
 	
 	@Override
