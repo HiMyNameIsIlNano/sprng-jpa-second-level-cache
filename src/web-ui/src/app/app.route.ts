@@ -1,5 +1,5 @@
 import { Routes, RouterModule }  from '@angular/router';
-import { UserAccountComponent } from './person/user-account.component';
+import { UserAccountComponent } from './user-account/user-account.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './shared/auth.guard';
 
@@ -9,9 +9,9 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
-  // map '/details/:id' to person details component only if Authenticated
+  // map 'account/details/:id' to person details component only if Authenticated
   {
-    path: 'details/:id',
+    path: 'account/details/:id',
     component: UserAccountComponent, canActivate: [AuthGuard]
   },
   // map '/' to '/login' as our default route

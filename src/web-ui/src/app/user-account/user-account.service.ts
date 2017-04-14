@@ -19,6 +19,18 @@ export class UserAccountService {
       .map(mapUserAccount);
     return user$;
   }
+
+  edit(userAccount: UserAccount): Observable<Response> {
+    return this.http.put(`${baseUrl}/update`, 
+      JSON.stringify(userAccount), 
+      { headers: contentHeaders });
+  }
+
+  save(userAccount: UserAccount): Observable<Response> {
+    return this.http.post(`${baseUrl}/save`, 
+      JSON.stringify(userAccount), 
+      { headers: contentHeaders });
+  }
 }
 
 function mapUserAccount(response: Response): UserAccount {

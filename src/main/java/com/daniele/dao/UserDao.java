@@ -11,4 +11,6 @@ public interface UserDao{
 	List<UserAccount> getUsersLike(String likeString);
 	UserAccount getUserByEmail(String email);
 	void saveUser(UserAccount user);
+
+	void deleteUser(UserAccount user);
 }

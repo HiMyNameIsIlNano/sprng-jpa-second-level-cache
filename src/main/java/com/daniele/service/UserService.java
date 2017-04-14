@@ -12,4 +12,6 @@ public interface UserService {
 	void saveUser(UserAccount user);
 	List<UserAccount> getUsersLike(String stringLike);
 	UserAccount getUserByEmail(String email);
+
+	void updateUser(UserAccount user);
 }

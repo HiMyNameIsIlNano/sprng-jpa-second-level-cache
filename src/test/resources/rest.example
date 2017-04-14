@@ -1,7 +1,7 @@
 {
   "lastUpdate" : "2017-04-07",
   "name" : "John",
-  "surname" : null,
+  "surname" : "Doe",
   "email" : "john.doe01@email.com",
   "password" : "johndoe01",
   "joinDate" : "2017-04-07",
@@ -9,7 +9,7 @@
   "profilePhoto" : null,
   "address" : {
     "lastUpdate" : "2017-04-07",
-    "street" : null,
+    "street" : "Foo street",
     "streetNumber" : 1,
     "zipcode" : "20091",
     "city" : "Foo City 1"

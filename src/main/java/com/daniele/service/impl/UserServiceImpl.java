@@ -56,4 +56,12 @@ public class UserServiceImpl implements UserService {
 	public UserAccount getUserByEmail(String email) {
 		return userDao.getUserByEmail(email);
 	}
+
+	@Override
+	@Transactional
+	public void updateUser(UserAccount user) { 
+		UserAccount persistedAccount = userDao.getUserById(user.getId());
+		userDao.deleteUser(persistedAccount);
+		userDao.saveUser(user);
+	}
 }

@@ -1,42 +1,25 @@
-<section id="cover">
-  <div id="cover-caption">
-    <div class="container">
-      <div class="col-sm-10 col-sm-offset-1">
-        <h1 class="display-3">Welcome to my Showcase</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste modi esse, dignissimos obcaecati beatae nam possimus
-          mollitia quas itaque tenetur vitae molestiae sed, laborum perferendis ratione quibusdam numquam nobis commodi!</p>
-        <form role="form" class="form-inline" (submit)="onLogin($event)">
-          <div class="form-group">
-            <label class="sr-only">Username</label>
-            <input type="text" class="form-control form-control-lg" placeholder="username" name="email" [(ngModel)]="email">
-          </div>
-          <div class="form-group">
-            <label class="sr-only">Password</label>
-            <input type="text" class="form-control form-control-lg" placeholder="password" name="password" [(ngModel)]="password">
-          </div>
-          <button type="submit" class="btn btn-success btn-lg">Login</button>
-            <a [routerLink]="['/details/1']">Click here to Signup</a>
-        </form>
-        <br>
-        <a href="#nav-main" class="btn btn-secondary-outline btn-sm" role="button">&darr;</a>
-      </div>
-    </div>
-  </div>
-</section>
-<nav class="navbar navbar-inverse" id="nav-main">
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Info</a></li>
-        <li><a href="#">Donate</a></li>
-      </ul>
-      <form class="navbar-form navbar-right">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-    </div>
-  </div>
-</nav>
+<!--
+    resource: http://bootsnipp.com/snippets/featured/google-style-login-extended-with-html5-localstorage
+    you can substitue the span of reauth email for a input with the email and
+    include the remember me checkbox
+-->
+<div class="container">
+    <div class="card card-container">
+        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+        <p id="profile-name" class="profile-name-card"></p>
+        <form class="form-signin" (submit)="onLogin($event)">
+            <span id="reauth-email" class="reauth-email"></span>
+            <input type="email" class="form-control" placeholder="Email address" name="email" [(ngModel)]="email" required autofocus>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" [(ngModel)]="password" required>
+            <!--<div id="remember" class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>-->
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+        </form><!-- /form -->
+        <!--<a href="#" class="forgot-password">
+            Forgot the password?
+        </a>-->
+    </div><!-- /card-container -->
+</div><!-- /container -->

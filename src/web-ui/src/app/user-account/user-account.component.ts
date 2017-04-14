@@ -34,4 +34,8 @@ export class UserAccountComponent implements OnInit, OnDestroy {
   gotoDetails() {
     this.router.navigate(['/details', this.userAccount.id]);
   }
+
+  isProfilePhotoSet() {
+    return false;
+  }
 }

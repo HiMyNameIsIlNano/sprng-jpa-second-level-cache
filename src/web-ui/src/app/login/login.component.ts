@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { LoginService } from './login.service';
 
-import { UserAccount } from '../person/UserAccount';
+import { UserAccount } from '../user-account/UserAccount';
 
 @Component({
   selector: 'app-login',
@@ -26,9 +26,8 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.email, this.password)
       .subscribe(userId => {
         if (userId !== -1) {
-          console.log('login successful');
           // login successful
-          this.router.navigate(['/details/' + userId]);
+          this.router.navigate(['/account/details/' + userId]);
         } else {
           // login failed
           this.errorMessage = 'Username or password is incorrect';

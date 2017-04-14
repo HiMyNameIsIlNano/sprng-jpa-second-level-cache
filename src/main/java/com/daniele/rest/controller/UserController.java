@@ -28,6 +28,14 @@ public class UserController {
 		return new ResponseEntity<UserAccount>(userService.getUserById(id), HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/update", method = RequestMethod.PUT)
+	public ResponseEntity<UserAccount> updateUser(@RequestBody UserAccount user) {
+		if (user != null) {
+			userService.updateUser(user);
+		}
+		return new ResponseEntity<UserAccount>(user, HttpStatus.OK);
+	}
+
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ResponseEntity<UserAccount> saveUser(@RequestBody UserAccount user) {
 		if (user != null) {
